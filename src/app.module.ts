@@ -11,7 +11,8 @@ import { EmployeeModule } from './employee/employee.module';
   imports: [
     GraphQLModule.forRoot({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql'),
+      autoSchemaFile: true,
+      // autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql'),
     }),
 
     TypeOrmModule.forRoot({
@@ -20,9 +21,10 @@ import { EmployeeModule } from './employee/employee.module';
       port: 5432,
       username: 'postgres',
       password: '1234',
-      database: 'graphql',
+      database: 'nestjs',
       entities: ["dist/**/*.entity{.ts,.js"], //telling to typeorm go to entity.ts and create a table first
-      synchronize: true
+      synchronize: true,
+      autoLoadEntities: true,
     }),
 
     EmployeeModule,
@@ -30,4 +32,4 @@ import { EmployeeModule } from './employee/employee.module';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
