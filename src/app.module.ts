@@ -3,16 +3,14 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { EmployeeModule } from './employee/employee.module';
+import { ProjectModule } from './project/project.module';
 
 @Module({
   imports: [
     GraphQLModule.forRoot({
       driver: ApolloDriver,
-      autoSchemaFile: true,
-      // autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql'),
+      autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql'),
     }),
 
     TypeOrmModule.forRoot({
@@ -28,6 +26,7 @@ import { EmployeeModule } from './employee/employee.module';
     }),
 
     EmployeeModule,
+    ProjectModule,
   ],
   controllers: [],
   providers: [],

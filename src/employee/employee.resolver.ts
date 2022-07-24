@@ -10,7 +10,7 @@ export class EmployeeResolver {
 
     @Query(() => [Employee], { name: "getAllemployees" })
     findall() {
-        // return this.employeeService.findAll();
+        return this.employeeService.findAll();
 
     }
 
